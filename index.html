@@ -8,7 +8,7 @@
         * { box-sizing: border-box; }
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f2f8f4; /* Nền xanh lá nhạt */
+            background-color: #f2f8f4; 
             color: #333; 
             margin: 0; 
             padding: 20px; 
@@ -21,7 +21,7 @@
         .score-banner {
             position: sticky;
             top: 10px;
-            background: #e67e22; /* Cam gỗ ấm */
+            background: #e67e22; 
             color: #fff;
             padding: 15px;
             display: flex;
@@ -43,7 +43,7 @@
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
-            display: none; /* Ẩn mặc định */
+            display: none; 
             transition: 0.3s;
         }
         #retry-btn:hover { background: #e74c3c; }
@@ -121,30 +121,8 @@
             color: #d35400; 
             font-size: 1.3em; 
             display: block; 
-            margin-bottom: 8px;
             font-weight: bold;
         }
-        
-        .example-box {
-            background: #fef5e7; 
-            padding: 15px; 
-            border-radius: 6px; 
-            margin-bottom: 15px; 
-            border-left: 4px solid #e67e22;
-        }
-        .example-box .ex-header strong { color: #d35400; }
-        .example-box .kr-ex { font-weight: bold; font-size: 1.2em; color: #2e7d32; display: block; margin-top: 5px; }
-        .example-box .vn-ex { font-size: 1.1em; color: #34495e; margin-top: 8px; border-top: 1px dashed #bdc3c7; padding-top: 8px; }
-
-        .han-viet-box {
-            background: #eafaf1; 
-            color: black; 
-            padding: 12px; 
-            border-radius: 5px; 
-            font-size: 1.1em; 
-            border: 1px solid #a3e4d7;
-        }
-        .han-viet-box span { font-weight: bold; color: #117a65; }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
@@ -155,7 +133,7 @@
 <body>
 
 <div class="container">
-    <h1>Trắc nghiệm Từ vựng: 집안일 (Công việc nhà) <br> Tiếng Hàn Tổng Hợp Trung Cấp 4 - Bài 2</h1>
+    <h1>Trắc nghiệm Từ vựng: 집안일 (Công việc nhà) <br> Tiếng Hàn Tổng Hợp Trung Cấp 4 - Bài 2 (98 từ)</h1>
     
     <div class="score-banner">
         <span id="score-text">Điểm: 0 / 0 (Đã làm: 0)</span>
@@ -166,48 +144,113 @@
 </div>
 
 <script>
-// Dữ liệu từ vựng được phân loại chủ đề
+// Dữ liệu 98 từ vựng
 const rawVocabList = [
-    // --- CHỦ ĐỀ 1: GIẶT GIŨ (세탁) ---
-    { kr: "애벌빨래", vn: "Giặt thô, giặt sơ qua", cat: "Giặt giũ", ex_kr: "세탁기에 넣기 전에 애벌빨래를 하세요.", ex_vn: "Hãy giặt sơ qua trước khi cho vào máy giặt.", han: "🌱 <span>애벌 (Sơ qua/Lần đầu) + 빨래 (Giặt)</span>." },
-    { kr: "손빨래", vn: "Giặt tay", cat: "Giặt giũ", ex_kr: "이 옷은 손빨래를 해야 상하지 않아요.", ex_vn: "Áo này phải giặt tay thì mới không bị hỏng.", han: "🌱 <span>손 (Tay) + 빨래 (Giặt)</span>." },
-    { kr: "삶다", vn: "Luộc (quần áo, thức ăn)", cat: "Giặt giũ", ex_kr: "수건을 끓는 물에 삶았어요.", ex_vn: "Tôi đã luộc khăn tắm trong nước sôi.", han: "🌱 Từ thuần Hàn." },
-    { kr: "널다", vn: "Phơi (quần áo)", cat: "Giặt giũ", ex_kr: "햇볕이 좋아서 빨래를 널었어요.", ex_vn: "Nắng đẹp nên tôi đã phơi quần áo.", han: "🌱 Từ thuần Hàn." },
-    { kr: "개다", vn: "Gấp (quần áo)", cat: "Giặt giũ", ex_kr: "마른 빨래를 예쁘게 개서 옷장에 넣었어요.", ex_vn: "Tôi gấp gọn quần áo đã khô rồi cất vào tủ.", han: "🌱 Từ thuần Hàn." },
-    { kr: "다리다", vn: "Là, ủi (quần áo)", cat: "Giặt giũ", ex_kr: "구겨진 셔츠를 다리미로 다렸어요.", ex_vn: "Tôi đã ủi chiếc áo sơ mi bị nhăn bằng bàn là.", han: "🌱 Từ thuần Hàn." },
-    { kr: "얼룩을 지우다", vn: "Tẩy vết bẩn", cat: "Giặt giũ", ex_kr: "옷에 묻은 커피 얼룩을 지웠어요.", ex_vn: "Tôi đã tẩy vết cà phê dính trên áo.", han: "🌱 <span>얼룩 (Vết bẩn) + 지우다 (Xóa)</span>." },
-    { kr: "드라이클리닝을 맡기다", vn: "Ký gửi quần áo cho tiệm giặt là", cat: "Giặt giũ", ex_kr: "겨울 코트는 세탁소에 드라이클리닝을 맡겨야 해요.", ex_vn: "Áo khoác mùa đông phải đem ra tiệm giặt khô.", han: "💬 <span>Dry cleaning + 맡기다 (Giao phó)</span>." },
-    { kr: "헹구다", vn: "Xả (quần áo/bát đĩa)", cat: "Giặt giũ", ex_kr: "비눗물이 남지 않게 깨끗이 헹구세요.", ex_vn: "Hãy xả thật sạch để không còn đọng lại bọt xà phòng.", han: "🌱 Từ thuần Hàn." },
-    
-    // --- CHỦ ĐỀ 2: DỌN DẸP (청소) ---
-    { kr: "대청소", vn: "Tổng vệ sinh", cat: "Dọn dẹp", ex_kr: "봄을 맞이해서 집안 대청소를 했어요.", ex_vn: "Đón mùa xuân đến, tôi đã tổng vệ sinh nhà cửa.", han: "<span>대 (Đại: Lớn) + 청소 (Thanh tảo: Dọn dẹp)</span>." },
-    { kr: "분리 수거", vn: "Phân loại rác thải", cat: "Dọn dẹp", ex_kr: "쓰레기를 버릴 때는 분리 수거를 해야 합니다.", ex_vn: "Khi vứt rác phải phân loại rác thải.", han: "<span>분리 (Phân ly: Tách ra) + 수거 (Thu cự: Thu gom)</span>." },
-    { kr: "쓸다", vn: "Quét (nhà)", cat: "Dọn dẹp", ex_kr: "빗자루로 방바닥을 쓸었어요.", ex_vn: "Tôi dùng chổi quét sàn nhà.", han: "🌱 Từ thuần Hàn." },
-    { kr: "닦다", vn: "Lau rửa, đánh bóng", cat: "Dọn dẹp", ex_kr: "걸레로 창문을 깨끗하게 닦았어요.", ex_vn: "Tôi dùng giẻ lau sạch cửa sổ.", han: "🌱 Từ thuần Hàn." },
-    { kr: "먼지떨이", vn: "Cây phất trần", cat: "Dọn dẹp", ex_kr: "먼지떨이로 책상의 먼지를 털었어요.", ex_vn: "Tôi dùng cây phất trần phủi bụi trên bàn.", han: "🌱 <span>먼지 (Bụi) + 떨이 (Dụng cụ phủi)</span>." },
-    { kr: "치우다", vn: "Cất, thu dọn", cat: "Dọn dẹp", ex_kr: "식사가 끝난 후 식탁을 치웠어요.", ex_vn: "Sau khi ăn xong, tôi đã dọn dẹp bàn ăn.", han: "🌱 Từ thuần Hàn." },
-    { kr: "걸레질을 하다", 무: "Lau chùi (bằng giẻ)", cat: "Dọn dẹp", ex_kr: "방을 쓴 후에 걸레질을 했어요.", ex_vn: "Sau khi quét phòng xong, tôi đã lau nhà bằng giẻ.", han: "🌱 <span>걸레 (Giẻ lau) + 질 (Hành động)</span>." },
-    { kr: "소독제", vn: "Chất tiệt trùng", cat: "Dọn dẹp", ex_kr: "청소할 때 소독제를 사용하면 더 깨끗해요.", ex_vn: "Khi dọn dẹp nếu dùng chất tiệt trùng sẽ sạch hơn.", han: "<span>소독 (Tiêu độc: Tiệt trùng) + 제 (Tễ: Thuốc/Chất)</span>." },
+    // --- GIA ĐÌNH / VAI TRÒ ---
+    { kr: "가사", vn: "công việc nhà", cat: "Gia đình" },
+    { kr: "전업주부", vn: "người nội trợ", cat: "Gia đình" },
+    { kr: "가사 노동", vn: "làm việc nhà", cat: "Gia đình" },
+    { kr: "가사 도우미", vn: "người giúp việc nhà", cat: "Gia đình" },
+    { kr: "집안일을 하다", vn: "làm việc nhà", cat: "Gia đình" },
+    { kr: "살림을 하다", vn: "làm nội trợ", cat: "Gia đình" },
+    { kr: "가사를 전담하다", vn: "chuyên đảm trách công việc nhà", cat: "Gia đình" },
+    { kr: "가사를 분담하다", vn: "phân công công việc nhà", cat: "Gia đình" },
+    { kr: "맞벌이 부부", vn: "hai vợ chồng cùng kiếm tiền", cat: "Gia đình" },
+    { kr: "미혼", vn: "chưa kết hôn", cat: "Gia đình" },
+    { kr: "상 차리기", vn: "việc bày bàn ăn", cat: "Gia đình" },
+    { kr: "육아", vn: "nuôi dạy con nhỏ", cat: "Gia đình" },
+    { kr: "구성원", vn: "thành viên cấu thành", cat: "Gia đình" },
 
-    // --- CHỦ ĐỀ 3: VAI TRÒ & CÔNG VIỆC NHÀ (가족/역할) ---
-    { kr: "가사를 분담하다", vn: "Phân công công việc nhà", cat: "Gia đình", ex_kr: "맞벌이 부부는 가사를 분담하는 것이 중요합니다.", ex_vn: "Với vợ chồng cùng đi làm, việc phân công việc nhà là rất quan trọng.", han: "<span>가사 (Gia sự) + 분담 (Phân đảm)</span>." },
-    { kr: "가사를 전담하다", vn: "Chuyên đảm trách công việc nhà", cat: "Gia đình", ex_kr: "어머니가 가사를 전담하고 계십니다.", ex_vn: "Mẹ tôi là người chuyên đảm trách công việc nhà.", han: "<span>전담 (Chuyên đảm: Gánh vác toàn bộ)</span>." },
-    { kr: "전업주부", vn: "Người nội trợ", cat: "Gia đình", ex_kr: "그녀는 결혼 후 전업주부가 되었습니다.", ex_vn: "Cô ấy đã trở thành người nội trợ sau khi kết hôn.", han: "<span>전업 (Chuyên nghiệp) + 주부 (Chủ phụ)</span>." },
-    { kr: "가사 도우미", vn: "Người giúp việc nhà", cat: "Gia đình", ex_kr: "바빠서 일주일에 한 번 가사 도우미를 부릅니다.", ex_vn: "Vì bận rộn nên mỗi tuần tôi gọi người giúp việc 1 lần.", han: "<span>가사 (Gia sự) + 도우미 (Người giúp đỡ)</span>." },
-    { kr: "맞벌이 부부", vn: "Hai vợ chồng cùng kiếm tiền", cat: "Gia đình", ex_kr: "요즘은 맞벌이 부부가 점점 늘어나고 있습니다.", ex_vn: "Gần đây, các cặp vợ chồng cùng đi làm đang dần tăng lên.", han: "🌱 <span>맞벌이 (Cùng kiếm tiền) + 부부 (Phu phụ)</span>." },
-    { kr: "육아", vn: "Nuôi dạy con nhỏ", cat: "Gia đình", ex_kr: "직장 생활과 육아를 병행하는 것은 쉽지 않아요.", ex_vn: "Việc song song giữa công sở và nuôi dạy con là không hề dễ dàng.", han: "<span>육아 (Dục nhi)</span>." },
-    { kr: "상 차리기", vn: "Việc bày bàn ăn", cat: "Gia đình", ex_kr: "동생은 식사 때마다 상 차리기를 돕습니다.", ex_vn: "Em tôi luôn giúp đỡ việc bày bàn ăn mỗi bữa.", han: "🌱 <span>상 (Bàn) + 차리기 (Việc bày biện)</span>." },
+    // --- GIẶT GIŨ ---
+    { kr: "빨랫비누/세제", vn: "xà phòng giặt/chất giặt tẩy", cat: "Giặt giũ" },
+    { kr: "다리미", vn: "bàn là", cat: "Giặt giũ" },
+    { kr: "손빨래", vn: "giặt tay", cat: "Giặt giũ" },
+    { kr: "애벌빨래", vn: "giặt thô", cat: "Giặt giũ" },
+    { kr: "빨래를 하다", vn: "giặt giũ", cat: "Giặt giũ" },
+    { kr: "세탁기를 돌리다", vn: "mở máy giặt lên", cat: "Giặt giũ" },
+    { kr: "삶다", vn: "luộc", cat: "Giặt giũ" },
+    { kr: "널다", vn: "phơi (quần áo)", cat: "Giặt giũ" },
+    { kr: "개다", vn: "gấp (quần áo)", cat: "Giặt giũ" },
+    { kr: "다리다", vn: "là, ủi (quần áo)", cat: "Giặt giũ" },
+    { kr: "얼룩을 지우다", vn: "tẩy vết bẩn", cat: "Giặt giũ" },
+    { kr: "드라이클리닝을 맡기다", vn: "ký gửi quần áo cho tiệm giặt là", cat: "Giặt giũ" },
+    { kr: "헹구다", vn: "xả (quần áo)", cat: "Giặt giũ" },
 
-    // --- CHỦ ĐỀ 4: TỪ VỰNG CHUNG (일반 어휘) ---
-    { kr: "엉망이다", vn: "Hoang tàn, lộn xộn", cat: "Từ vựng chung", ex_kr: "청소를 안 해서 방이 엉망이에요.", ex_vn: "Vì không dọn dẹp nên căn phòng rất lộn xộn.", han: "🌱 Từ thuần Hàn." },
-    { kr: "미루다", vn: "Hoãn lại, để lại, dồn lại", cat: "Từ vựng chung", ex_kr: "오늘 할 일을 내일로 미루지 마세요.", ex_vn: "Đừng trì hoãn việc hôm nay sang ngày mai.", han: "🌱 Từ thuần Hàn." },
-    { kr: "여유롭다", vn: "Dư thừa, rỗi rãi, thong thả", cat: "Từ vựng chung", ex_kr: "주말에는 여유롭게 책을 읽고 싶어요.", ex_vn: "Cuối tuần tôi muốn thong thả đọc sách.", han: "<span>여유 (Dư dụ) + 롭다</span>." },
-    { kr: "책임", vn: "Trách nhiệm", cat: "Từ vựng chung", ex_kr: "맡은 일에 책임을 다해야 합니다.", ex_vn: "Phải làm hết trách nhiệm đối với công việc được giao.", han: "<span>책임 (Trách nhiệm)</span>." },
-    { kr: "효율적", vn: "Tính năng suất, hiệu suất", cat: "Từ vựng chung", ex_kr: "시간을 효율적으로 사용해야 합니다.", ex_vn: "Phải sử dụng thời gian một cách hiệu quả.", han: "<span>효율 (Hiệu suất) + 적 (Đích)</span>." },
-    { kr: "바람직하다", vn: "Đáng khát khao, lý tưởng, đáng làm", cat: "Từ vựng chung", ex_kr: "아이들에게 칭찬을 해 주는 것은 바람직합니다.", ex_vn: "Việc dành lời khen cho trẻ em là một điều rất lý tưởng (đáng làm).", han: "🌱 Từ thuần Hàn." },
-    { kr: "적절히", vn: "Phù hợp, thích hợp", cat: "Từ vựng chung", ex_kr: "상황에 맞게 적절히 대처해야 합니다.", ex_vn: "Phải đối phó một cách thích hợp tùy theo tình huống.", han: "<span>적절 (Thích thiết: Phù hợp) + 히</span>." },
-    { kr: "챙기다", vn: "Thu vén, chuẩn bị, sắp xếp", cat: "Từ vựng chung", ex_kr: "여행 갈 때 필요한 물건을 잘 챙기세요.", ex_vn: "Khi đi du lịch hãy chuẩn bị (thu vén) đồ đạc cần thiết thật kỹ.", han: "🌱 Từ thuần Hàn." },
-    { kr: "수입", vn: "Thu nhập / Nhập khẩu", cat: "Từ vựng chung", ex_kr: "그는 매달 일정한 수입이 있습니다.", ex_vn: "Anh ấy có thu nhập ổn định mỗi tháng.", han: "<span>수입 (Thu nhập / Thụ nhập)</span>." }
+    // --- DỌN DẸP ---
+    { kr: "대청소", vn: "tổng vệ sinh", cat: "Dọn dẹp" },
+    { kr: "빗자루", vn: "cái chổi", cat: "Dọn dẹp" },
+    { kr: "먼지떨이", vn: "cây phất trần", cat: "Dọn dẹp" },
+    { kr: "걸레", vn: "cái giẻ", cat: "Dọn dẹp" },
+    { kr: "분리 수거", vn: "phân loại rác thải", cat: "Dọn dẹp" },
+    { kr: "쓸다", vn: "quét", cat: "Dọn dẹp" },
+    { kr: "닦다", vn: "lau rửa, đánh bóng", cat: "Dọn dẹp" },
+    { kr: "털다 (28)", vn: "giũ", cat: "Dọn dẹp" },
+    { kr: "털다 (80)", vn: "giũ sạch, phủi bụi", cat: "Dọn dẹp" },
+    { kr: "치우다", vn: "cất, thu dọn", cat: "Dọn dẹp" },
+    { kr: "정리하다", vn: "chỉnh đốn, sắp xếp", cat: "Dọn dẹp" },
+    { kr: "청소기를 돌리다", vn: "hút bụi (bằng máy)", cat: "Dọn dẹp" },
+    { kr: "걸레질을 하다", vn: "lau chùi", cat: "Dọn dẹp" },
+    { kr: "문지르다", vn: "cọ rửa", cat: "Dọn dẹp" },
+    { kr: "소독제", vn: "chất tiệt trùng", cat: "Dọn dẹp" },
+    { kr: "수세미", vn: "miếng rửa bát", cat: "Dọn dẹp" },
+    { kr: "지저분하다", vn: "hỗn độn, bẩn thỉu", cat: "Dọn dẹp" },
+    { kr: "헝겊", vn: "miếng vải, miếng giẻ", cat: "Dọn dẹp" },
+    { kr: "재활용", vn: "tái sử dụng", cat: "Dọn dẹp" },
+
+    // --- TỪ VỰNG CHUNG ---
+    { kr: "굳히다", vn: "tôi luyện, làm cho cứng rắn", cat: "Từ vựng chung" },
+    { kr: "기름기", vn: "chất béo", cat: "Từ vựng chung" },
+    { kr: "늘어나다", vn: "tăng lên, kéo dài, mở rộng", cat: "Từ vựng chung" },
+    { kr: "다듬다", vn: "gọt giũa, cắt tỉa, trang hoàng", cat: "Từ vựng chung" },
+    { kr: "돌보다", vn: "trông nom, trông coi", cat: "Từ vựng chung" },
+    { kr: "때", vn: "khi, lúc", cat: "Từ vựng chung" },
+    { kr: "미루다", vn: "hoãn lại, để lại, dồn lại", cat: "Từ vựng chung" },
+    { kr: "미지근하다", vn: "lãnh đạm, nhạt nhẽo", cat: "Từ vựng chung" },
+    { kr: "바람직하다", vn: "đáng khát khao, đáng làm", cat: "Từ vựng chung" },
+    { kr: "반하다", vn: "ngược lại, rơi vào bẫy tình", cat: "Từ vựng chung" },
+    { kr: "방지", vn: "ngăn chặn, ngăn ngừa", cat: "Từ vựng chung" },
+    { kr: "방해", vn: "cản trở, ngăn cản", cat: "Từ vựng chung" },
+    { kr: "보도", vn: "đưa tin (thời sự)", cat: "Từ vựng chung" },
+    { kr: "불리다", vn: "được gọi là", cat: "Từ vựng chung" },
+    { kr: "브라운관", vn: "đèn hình", cat: "Từ vựng chung" },
+    { kr: "뿌리다", vn: "tưới, rải, rắc", cat: "Từ vựng chung" },
+    { kr: "상상", vn: "sự tưởng tượng", cat: "Từ vựng chung" },
+    { kr: "성분", vn: "thành phần", cat: "Từ vựng chung" },
+    { kr: "성장하다", vn: "trưởng thành", cat: "Từ vựng chung" },
+    { kr: "소중하다", vn: "quan trọng", cat: "Từ vựng chung" },
+    { kr: "소질", vn: "tố chất", cat: "Từ vựng chung" },
+    { kr: "수입", vn: "thu nhập, nhập khẩu", cat: "Từ vựng chung" },
+    { kr: "식초", vn: "dấm", cat: "Từ vựng chung" },
+    { kr: "액체", vn: "chất lỏng", cat: "Từ vựng chung" },
+    { kr: "어지럽다", vn: "hoa mắt, chóng mặt, hỗn loạn", cat: "Từ vựng chung" },
+    { kr: "엉망이다", vn: "hoang tàn, lộn xộn", cat: "Từ vựng chung" },
+    { kr: "엉키다", vn: "rối tung, rối rắm", cat: "Từ vựng chung" },
+    { kr: "여유롭다", vn: "dư thừa, rỗi rãi", cat: "Từ vựng chung" },
+    { kr: "여전히", vn: "vẫn, như trước", cat: "Từ vựng chung" },
+    { kr: "여전히 (98)", vn: "trước đây, như trước đây", cat: "Từ vựng chung" },
+    { kr: "완벽하다", vn: "hoàn hảo", cat: "Từ vựng chung" },
+    { kr: "응용하다", vn: "ứng dụng", cat: "Từ vựng chung" },
+    { kr: "인식", vn: "nhận thức", cat: "Từ vựng chung" },
+    { kr: "적절히", vn: "phù hợp, thích hợp", cat: "Từ vựng chung" },
+    { kr: "전문화", vn: "chuyên môn hóa", cat: "Từ vựng chung" },
+    { kr: "정전기", vn: "tĩnh điện, tia lửa điện (do ma sát)", cat: "Từ vựng chung" },
+    { kr: "참여하다", vn: "tham dự", cat: "Từ vựng chung" },
+    { kr: "책임", vn: "trách nhiệm", cat: "Từ vựng chung" },
+    { kr: "챙기다", vn: "thu vén, chỉnh đốn, sắp xếp", cat: "Từ vựng chung" },
+    { kr: "취향", vn: "thị hiếu, sở thích", cat: "Từ vựng chung" },
+    { kr: "틈", vn: "khoảng trống, vết rạn nứt, cơ hội", cat: "Từ vựng chung" },
+    { kr: "현대", vn: "hiện đại", cat: "Từ vựng chung" },
+    { kr: "효율적", vn: "tính năng suất, hiệu suất", cat: "Từ vựng chung" },
+    { kr: "햇볕", vn: "ánh nắng, tia nắng", cat: "Từ vựng chung" },
+    { kr: "첫눈", vn: "cái nhìn đầu tiên", cat: "Từ vựng chung" },
+    { kr: "상하다", vn: "hư hại, hỏng", cat: "Từ vựng chung" },
+    { kr: "먹물", vn: "mực nước, mực tàu", cat: "Từ vựng chung" },
+    { kr: "화초", vn: "hoa cỏ, cây hoa", cat: "Từ vựng chung" },
+    { kr: "당연히", vn: "một cách đương nhiên", cat: "Từ vựng chung" },
+    { kr: "이루어지다", vn: "tạo nên, đạt được, có kết quả", cat: "Từ vựng chung" },
+    { kr: "일반적으로", vn: "nói chung, theo thông thường", cat: "Từ vựng chung" },
+    { kr: "차이가 있다", vn: "có sự khác nhau", cat: "Từ vựng chung" },
+    { kr: "반대로", vn: "trái nghĩa, ngược lại", cat: "Từ vựng chung" }
 ];
 
 // Tạo bộ câu hỏi với distractors
@@ -227,34 +270,29 @@ rawVocabList.forEach((item, index) => {
         cat: item.cat,
         options: options,
         correctIndex: options.indexOf(item.vn),
-        answerText: item.vn,
-        ex_kr: item.ex_kr,
-        ex_vn: item.ex_vn,
-        han: item.han
+        answerText: item.vn
     });
 });
 
 let score = 0;
 let answeredCount = 0;
-let wrongQuestionIds = []; // Mảng lưu các ID câu trả lời sai
+let wrongQuestionIds = []; 
 const container = document.getElementById('quiz-container');
 
-// Hàm render giao diện (hiển thị danh sách câu hỏi được truyền vào)
+// Hàm render giao diện 
 function renderQuiz(questionsToRender) {
     container.innerHTML = '';
     let currentCategory = '';
 
-    // Sắp xếp tạm theo Category để nhóm lại cho đẹp nếu đang làm mảng full
+    // Nhóm theo chủ đề
     let sortedQuestions = [...questionsToRender].sort((a, b) => a.cat.localeCompare(b.cat));
 
-    sortedQuestions.forEach((q, displayIndex) => {
-        // In ra tiêu đề chủ đề nếu nó khác chủ đề trước đó
+    sortedQuestions.forEach((q) => {
         if (q.cat !== currentCategory) {
             currentCategory = q.cat;
             container.innerHTML += `<div class="category-title">📚 Chủ đề: ${currentCategory}</div>`;
         }
 
-        // Tạo khung HTML
         let html = `
         <div class="question-card" id="q-card-${q.id}">
             <div class="q-header">Câu hỏi <span class="badge">${q.cat}</span></div>
@@ -267,12 +305,6 @@ function renderQuiz(questionsToRender) {
             
             <div class="explanation" id="exp-${q.id}">
                 <strong class="correct-ans">✅ Đáp án đúng: ${q.answerText}</strong>
-                <div class="example-box">
-                    <div class="ex-header">📖 <strong>Ví dụ:</strong></div>
-                    <span class="kr-ex">"${q.ex_kr}"</span>
-                    <div class="vn-ex">➔ ${q.ex_vn}</div>
-                </div>
-                <div class="han-viet-box">🔍 <strong>Từ nguyên:</strong> ${q.han}</div>
             </div>
         </div>
         `;
@@ -280,15 +312,11 @@ function renderQuiz(questionsToRender) {
     });
 }
 
-// Kiểm tra đáp án
 function checkAns(questionId, selectedIndex, btnElement) {
-    // Tìm object câu hỏi theo ID
     const q = allQuestions.find(item => item.id === questionId);
-    
     const optionsDiv = document.getElementById(`opts-${questionId}`);
     const buttons = optionsDiv.querySelectorAll('.opt-btn');
     
-    // Khóa nút
     buttons.forEach((btn, idx) => {
         btn.disabled = true;
         if (idx === q.correctIndex) {
@@ -298,12 +326,10 @@ function checkAns(questionId, selectedIndex, btnElement) {
         }
     });
     
-    // Cập nhật logic điểm và câu sai
     answeredCount++;
     if (selectedIndex === q.correctIndex) {
         score++;
     } else {
-        // Nếu trả lời sai, thêm ID vào mảng wrongQuestionIds (nếu chưa có)
         if (!wrongQuestionIds.includes(questionId)) {
             wrongQuestionIds.push(questionId);
         }
@@ -312,36 +338,27 @@ function checkAns(questionId, selectedIndex, btnElement) {
     document.getElementById('score-text').innerText = `Điểm: ${score} / ${answeredCount}`;
     document.getElementById(`exp-${questionId}`).style.display = 'block';
 
-    // Hiện nút "Làm lại câu sai" nếu có ít nhất 1 câu sai
     if (wrongQuestionIds.length > 0) {
         document.getElementById('retry-btn').style.display = 'inline-block';
     }
 }
 
-// Tính năng "Làm lại câu sai"
 function retryWrongQuestions() {
     if (wrongQuestionIds.length === 0) return;
 
-    // Lọc ra danh sách câu hỏi dựa trên các ID làm sai
     let retryList = allQuestions.filter(q => wrongQuestionIds.includes(q.id));
-    
-    // Render lại màn hình chỉ với các câu làm sai
     renderQuiz(retryList);
     
-    // Reset bộ đếm điểm, nhưng làm trống mảng wrongQuestionIds để chấm lại từ đầu đợt retry này
     score = 0;
     answeredCount = 0;
     wrongQuestionIds = [];
     document.getElementById('score-text').innerText = `Điểm: 0 / 0 (Chế độ: Làm lại câu sai)`;
     document.getElementById('retry-btn').style.display = 'none';
     
-    // Kéo mượt lên đầu trang
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Khởi chạy khi load trang
 window.onload = () => {
-    // Render toàn bộ dữ liệu ban đầu
     renderQuiz(allQuestions);
 };
 </script>
